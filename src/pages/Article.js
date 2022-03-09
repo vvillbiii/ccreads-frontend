@@ -12,8 +12,8 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPenToSquare,
-  faStar,
   faBookmark,
+  faHeart,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
@@ -77,7 +77,7 @@ const Article = (props) => {
                       to="/"
                       style={{ textDecoration: "none", color: "white" }}
                     >
-                      <FontAwesomeIcon icon={faStar} className="mx-2" />
+                      <FontAwesomeIcon icon={faHeart} className="mx-2" />
                     </Link>
                   </div>
                   {article.title}

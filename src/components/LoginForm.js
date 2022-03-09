@@ -33,7 +33,7 @@ const LoginForm = (props) => {
       password: "",
     });
 
-    return navigate("/");
+    return navigate("/dashboard");
   };
 
   return (
@@ -51,6 +51,7 @@ const LoginForm = (props) => {
                   id="email"
                   placeholder="email@email.com"
                   onChange={handleChange}
+                  required
                 />
               </Form.Group>
               <Form.Group className="mb-3">
@@ -62,6 +63,7 @@ const LoginForm = (props) => {
                   id="password"
                   placeholder="******"
                   onChange={handleChange}
+                  required
                 />
               </Form.Group>
               <div className="d-grid gap-2">

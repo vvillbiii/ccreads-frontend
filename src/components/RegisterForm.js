@@ -52,6 +52,7 @@ const RegisterForm = (props) => {
                   id="username"
                   placeholder="enter username"
                   onChange={handleChange}
+                  required
                 />
               </Form.Group>
               <Form.Group className="mb-3">
@@ -63,6 +64,7 @@ const RegisterForm = (props) => {
                   id="email"
                   placeholder="email@email.com"
                   onChange={handleChange}
+                  required
                 />
               </Form.Group>
               <Form.Group className="mb-3">
@@ -74,6 +76,7 @@ const RegisterForm = (props) => {
                   id="password"
                   placeholder="******"
                   onChange={handleChange}
+                  required
                 />
               </Form.Group>
               <div className="d-grid gap-2">

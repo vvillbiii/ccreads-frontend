@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Article from "../pages/Article";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
+import Dashboard from "../pages/Dashboard";
 
 const Main = (props) => {
   const [article, setArticle] = useState(null);
@@ -30,6 +31,7 @@ const Main = (props) => {
         />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/dashboard" element={<Dashboard reads={article} />} />
       </Routes>
     </main>
   );

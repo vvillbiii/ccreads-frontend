@@ -43,6 +43,15 @@ const Footer = (props) => {
                 About
               </Link>
             </li>
+            <li className="nav-item">
+              <Link
+                to="/"
+                className="nav-link px-2 text-muted"
+                style={{ textDecoration: "none" }}
+              >
+                Advertise
+              </Link>
+            </li>
           </ul>
           <p className="text-center text-muted">
             &copy; 2021 Conscious Culture
