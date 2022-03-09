@@ -7,14 +7,18 @@
 }
 
 .card {
-  background-color: black;
-  color: rgb(243, 237, 237);
+  /* background-color: black; */
+  background-color: #1d2226;
+  /* color: rgb(243, 237, 237); */
+  /* color: #c5c6c7; */
+  color: white;
   text-overflow: ellipsis;
   overflow: hidden;
 }
 
 .navbar {
-  background-color: #c7d0d8;
+  /* background-color: #c7d0d8; */
+  background-color: #1d2226;
 }
 
 html,
@@ -24,4 +28,5 @@ body,
   height: 100%;
   /* background-color: rgba(48, 47, 67, 0.8); */
   background-color: #302f43;
+  background-color: black;
 }
