@@ -1,14 +1,5 @@
 import { useState } from "react";
-import {
-  Spinner,
-  Card,
-  Button,
-  Modal,
-  Form,
-  Container,
-  Row,
-  Col,
-} from "react-bootstrap";
+import { Spinner, Card, Button, Container, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPenToSquare,
@@ -16,37 +7,7 @@ import {
   faHeart,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-
-function MyVerticallyCenteredModal(props) {
-  return (
-    <Modal
-      {...props}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">Write Note</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <Form>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Note</Form.Label>
-            <textarea className="form-control" id="note" rows="3"></textarea>
-          </Form.Group>
-          <div className="d-grid gap-2">
-            <Button variant="secondary" type="submit">
-              Add Note to Library
-            </Button>
-          </div>
-        </Form>
-      </Modal.Body>
-      {/* <Modal.Footer>
-          <Button onClick={props.onHide}>Close</Button>
-        </Modal.Footer> */}
-    </Modal>
-  );
-}
+import NoteModal from "../components/NoteModal";
 
 const Article = (props) => {
   const [modalShow, setModalShow] = useState(false);
@@ -61,13 +22,13 @@ const Article = (props) => {
               <Card.Body>
                 <Card.Title style={{ color: "white" }}>
                   <div className="d-flex justify-content-end">
-                    <Link
-                      to="/"
-                      style={{ textDecoration: "none", color: "white" }}
-                      onClick={() => setModalShow(true)}
-                    >
-                      <FontAwesomeIcon icon={faPenToSquare} className="mx-2" />
-                    </Link>
+                    <FontAwesomeIcon
+                      icon={faPenToSquare}
+                      className="mx-2"
+                      onClick={() => {
+                        setModalShow(true);
+                      }}
+                    />
                     <FontAwesomeIcon
                       icon={faBookmark}
                       className="mx-2"
@@ -78,7 +39,6 @@ const Article = (props) => {
                             "Content-Type": "application/json",
                           },
                         });
-                        // console.log(article._id);
                       }}
                     />
                     <FontAwesomeIcon
@@ -91,7 +51,6 @@ const Article = (props) => {
                             "Content-Type": "application/json",
                           },
                         });
-                        // console.log(article._id);
                       }}
                     />
                   </div>
@@ -109,9 +68,10 @@ const Article = (props) => {
               </Card.Body>
             </Card>
 
-            <MyVerticallyCenteredModal
+            <NoteModal
               show={modalShow}
               onHide={() => setModalShow(false)}
+              article={article}
             />
           </Row>
         </Container>

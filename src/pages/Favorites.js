@@ -50,7 +50,9 @@ const Favorite = (props) => {
                 Favorite
               </Card.Subtitle>
               <Card.Text>{read.description}</Card.Text>
-              <Card.Link href={read.url}>Read</Card.Link>
+              <Card.Link href={read.url} style={{ textDecorationLine: "none" }}>
+                Read
+              </Card.Link>
             </Card.Body>
           </Card>
         </Container>
