@@ -36,7 +36,7 @@ const Footer = (props) => {
             </li>
             <li className="nav-item">
               <Link
-                to="/"
+                to="/about"
                 className="nav-link px-2 text-muted"
                 style={{ textDecoration: "none" }}
               >
@@ -45,7 +45,7 @@ const Footer = (props) => {
             </li>
             <li className="nav-item">
               <Link
-                to="/"
+                to="/advertise"
                 className="nav-link px-2 text-muted"
                 style={{ textDecoration: "none" }}
               >

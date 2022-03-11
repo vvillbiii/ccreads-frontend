@@ -9,18 +9,17 @@ const ProfileNav = (props) => {
           <Card.Body>
             <Card.Text>
               <div>
-                <Link to="/" style={{ textDecorationLine: "none" }}>
-                  <bold>Bookmarks</bold>
+                <Link to="/bookmarks" style={{ textDecorationLine: "none" }}>
+                  Bookmarks
                 </Link>
               </div>
-              <hr />
               <div>
-                <Link to="/" style={{ textDecorationLine: "none" }}>
+                <Link to="/favorites" style={{ textDecorationLine: "none" }}>
                   Favorites
                 </Link>
               </div>
               <div>
-                <Link to="/" style={{ textDecorationLine: "none" }}>
+                <Link to="/notes" style={{ textDecorationLine: "none" }}>
                   Notes
                 </Link>
               </div>

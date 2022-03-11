@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const RegisterForm = (props) => {
   const URL = "https://capstone-mern-backend.herokuapp.com/";
@@ -12,8 +12,13 @@ const RegisterForm = (props) => {
     password: "",
   });
 
+  const [valid, setValid] = useState(false);
+
+  const formRef = useRef();
+
   // handleChange function for form
   const handleChange = (event) => {
+    // setValid(!formRef.current.checkValidity());
     setNewForm({ ...newForm, [event.target.name]: event.target.value });
   };
 
@@ -33,8 +38,9 @@ const RegisterForm = (props) => {
       email: "",
       password: "",
     });
-
-    return navigate("/login");
+    if (formRef.current.checkValidity()) {
+      return navigate("/login");
+    }
   };
 
   return (
@@ -77,10 +83,11 @@ const RegisterForm = (props) => {
                   placeholder="******"
                   onChange={handleChange}
                   required
+                  pattern=".{8,}"
                 />
               </Form.Group>
               <div className="d-grid gap-2">
-                <Button variant="primary" type="submit">
+                <Button variant="outline-primary" type="submit">
                   Submit
                 </Button>
               </div>

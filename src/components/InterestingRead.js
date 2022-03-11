@@ -2,19 +2,17 @@ import { Card, Spinner, Container, Row, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const InterestingRead = (props) => {
-  console.log(props.reads);
-
   const loaded = () => {
     return props.reads.map((read) => (
       <div key={read._id}>
         <Container>
           <li>
-            <a
-              href={read.url}
+            <Link
+              to={read.url}
               style={{ color: "white", textDecoration: "none" }}
             >
               <h5> {read.title}</h5>
-            </a>
+            </Link>
           </li>
         </Container>
       </div>

@@ -21,18 +21,21 @@ const LoginForm = (props) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    await fetch(`${URL}login`, {
+    const response = await fetch(`${URL}login`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newForm),
     });
+    const data = await response.json();
+    // console.log( data);
+    localStorage.setItem("token", data.token);
     setNewForm({
       email: "",
       password: "",
     });
-
+    // return navigate(`/${data.foundUser._id}`);
     return navigate("/dashboard");
   };
 
@@ -67,7 +70,7 @@ const LoginForm = (props) => {
                 />
               </Form.Group>
               <div className="d-grid gap-2">
-                <Button variant="primary" type="submit">
+                <Button variant="outline-primary" type="submit">
                   Login
                 </Button>
               </div>

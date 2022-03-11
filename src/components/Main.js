@@ -4,9 +4,13 @@ import Article from "../pages/Article";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
 import Dashboard from "../pages/Dashboard";
+import Settings from "../pages/Settings";
+import About from "../pages/About";
+import Advertise from "../pages/Advertise";
 
 const Main = (props) => {
   const [article, setArticle] = useState(null);
+  const [token, setToken] = useState({ token: null });
 
   const ARTICLEURL = "https://capstone-mern-backend.herokuapp.com/articles";
 
@@ -22,6 +26,17 @@ const Main = (props) => {
     getArticle();
   };
 
+  const getToken = () => {
+    const user = localStorage.getItem("token");
+    if (!user) {
+      setToken({ token: null });
+    } else {
+      setToken(user);
+    }
+  };
+
+  useEffect(() => getToken(), []);
+
   return (
     <main>
       <Routes>
@@ -29,9 +44,14 @@ const Main = (props) => {
           path="/"
           element={<Article article={article} onClick={onClick} />}
         />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login setToken={setToken} />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/dashboard" element={<Dashboard reads={article} />} />
+        {token ? (
+          <Route path="/dashboard" element={<Dashboard reads={article} />} />
+        ) : null}
+        <Route path="/settings" element={<Settings token={token} />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/advertise" element={<Advertise />} />
       </Routes>
     </main>
   );

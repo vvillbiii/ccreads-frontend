@@ -87,9 +87,9 @@ const Article = (props) => {
                 </Card.Subtitle>
                 <Card.Text>{article.description}</Card.Text>
                 <div className="d-flex justify-content-end mt3">
-                  <a href={article.url}>
-                    <Button variant="primary">Read Article</Button>
-                  </a>
+                  <Link to={article.url}>
+                    <Button variant="outline-primary">Read</Button>
+                  </Link>
                 </div>
               </Card.Body>
             </Card>
@@ -119,7 +119,7 @@ const Article = (props) => {
         </h1>
         {props.article ? loaded() : loading()}
         <div className="d-flex justify-content-center mt-3 pb-5">
-          <Button onClick={props.onClick} variant="primary">
+          <Button onClick={props.onClick} variant="outline-primary">
             Get New Reads
           </Button>
         </div>
