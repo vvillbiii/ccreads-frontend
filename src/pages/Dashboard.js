@@ -1,14 +1,16 @@
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Spinner } from "react-bootstrap";
 import ProfileInfo from "../components/ProfileInfo";
 import ProfileNav from "../components/Profilenav";
 import InterestingRead from "../components/InterestingRead";
 import { useState, useEffect } from "react";
 import ShowContainer from "../components/ShowContainer";
+import ShowItem from "../components/ShowItem";
 
 const Dashboard = (props) => {
   // const params = useParams();
   const URL = "https://capstone-mern-backend.herokuapp.com/";
   const [user, setUser] = useState(null);
+  const [bookmarks, setBookmarks] = useState(null);
 
   const getUser = async () => {
     const response = await fetch(`${URL}users`, {
@@ -24,13 +26,42 @@ const Dashboard = (props) => {
     getUser();
   }, []);
 
-  //   const getCurrentUser = () => {
-  //     return JSON.parse(localStorage.getItem("token"));
-  //   };
-  //   console.log(getCurrentUser);
+  const getBookmarks = async () => {
+    const response = await fetch(`${URL}bookmarks`, {
+      headers: {
+        "auth-token": localStorage.token,
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    setBookmarks(data);
+  };
 
-  //   useEffect(() => getCurrentUser(), []);
-  // console.log(user);
+  useEffect(() => {
+    getBookmarks();
+  });
+
+  const loaded = () => {
+    return (
+      <div>
+        <ShowItem
+          bookmarks={bookmarks.bookmarks}
+          // favorites={user.favoriteArticles}
+        />
+      </div>
+    );
+  };
+
+  const loading = () => {
+    return (
+      <div className="d-flex justify-content-center mt-5 mb-5">
+        <Spinner animation="border" variant="light" />
+      </div>
+    );
+  };
+
+  // console.log(bookmarks);
+
   const reads = props.reads;
   return (
     <div>
@@ -41,10 +72,11 @@ const Dashboard = (props) => {
             <ProfileNav />
           </Col>
           <Col lg={6}>
-            <ShowContainer
-            // bookmarks={user.bookmarks}
-            // favorites={user.favoriteArticles}
-            />
+            {/* <ShowContainer
+              bookmarks={bookmarks}
+              // favorites={user.favoriteArticles}
+            /> */}
+            {bookmarks ? loaded() : loading()}
           </Col>
           <Col lg>
             <InterestingRead reads={reads} />

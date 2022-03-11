@@ -12,13 +12,8 @@ const RegisterForm = (props) => {
     password: "",
   });
 
-  const [valid, setValid] = useState(false);
-
-  const formRef = useRef();
-
   // handleChange function for form
   const handleChange = (event) => {
-    // setValid(!formRef.current.checkValidity());
     setNewForm({ ...newForm, [event.target.name]: event.target.value });
   };
 
@@ -38,9 +33,7 @@ const RegisterForm = (props) => {
       email: "",
       password: "",
     });
-    if (formRef.current.checkValidity()) {
-      return navigate("/login");
-    }
+    return navigate("/login");
   };
 
   return (

@@ -11,7 +11,7 @@ const InterestingRead = (props) => {
               to={read.url}
               style={{ color: "white", textDecoration: "none" }}
             >
-              <h5> {read.title}</h5>
+              <p style={{ fontSize: "16px" }}> {read.title}</p>
             </Link>
           </li>
         </Container>

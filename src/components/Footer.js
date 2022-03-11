@@ -54,7 +54,7 @@ const Footer = (props) => {
             </li>
           </ul>
           <p className="text-center text-muted">
-            &copy; 2021 Conscious Culture
+            &copy; 2022 Conscious Culture
           </p>
         </footer>
       </Container>

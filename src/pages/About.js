@@ -6,7 +6,7 @@ const About = () => {
       <Container className="mt-5" style={{ color: "white" }}>
         <Row>
           <Col lg={{ span: 6, offset: 3 }}>
-            <h1>Conscious Culture</h1>
+            <h1 style={{ fontSize: "2.8em" }}>Conscious Culture</h1>
             <div>
               <p>Read Interesting Reads from a Wide Range of Disciplines</p>
             </div>
@@ -23,10 +23,14 @@ const About = () => {
             <div>
               <p>
                 We want to help you find your next read. As well as help you
-                become smarter and more productive. Conscious Culture allows you
-                find everything article that has been shared and save them to a
-                profile, so you can always revisit your favorite reads, and
-                create notes on what you learn.
+                become smarter and more productive.
+              </p>
+              <p>
+                Conscious Culture Reads allows you explore article that has been
+                shared on the Conscious Culture newsletter and save them to your
+                profile, so you can always revisit your favorite reads anytime
+                you want. Conscious Culture Reads also let's you create notes on
+                what you read so you have a place to put your takeaways.
               </p>
             </div>
           </Col>

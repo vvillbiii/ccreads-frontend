@@ -7,11 +7,11 @@ const ShowItem = (props) => {
     return props.bookmarks.map((read) => (
       <div key={read._id}>
         <Container>
-          <Card>
+          <Card className="mb-3">
             <Card.Body>
-              <Card.Title>Bookmark</Card.Title>
+              <Card.Title>{read.title}</Card.Title>
               <Card.Subtitle className="mb-2 text-muted">
-                {read.id}
+                Bookmark
               </Card.Subtitle>
               <Card.Text>{read.description}</Card.Text>
               <Card.Link href={read.url}>Read</Card.Link>
@@ -28,11 +28,7 @@ const ShowItem = (props) => {
       </div>
     );
   };
-  return (
-    <div>
-      <Container>{props.bookmarks ? loaded() : loading()}</Container>
-    </div>
-  );
+  return <div>{props.bookmarks ? loaded() : loading()}</div>;
 };
 
 export default ShowItem;

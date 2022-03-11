@@ -50,6 +50,7 @@ function MyVerticallyCenteredModal(props) {
 
 const Article = (props) => {
   const [modalShow, setModalShow] = useState(false);
+  const URL = "https://capstone-mern-backend.herokuapp.com/";
 
   const loaded = () => {
     return props.article.map((article) => (
@@ -67,18 +68,32 @@ const Article = (props) => {
                     >
                       <FontAwesomeIcon icon={faPenToSquare} className="mx-2" />
                     </Link>
-                    <Link
-                      to="/"
-                      style={{ textDecoration: "none", color: "white" }}
-                    >
-                      <FontAwesomeIcon icon={faBookmark} className="mx-2" />
-                    </Link>
-                    <Link
-                      to="/"
-                      style={{ textDecoration: "none", color: "white" }}
-                    >
-                      <FontAwesomeIcon icon={faHeart} className="mx-2" />
-                    </Link>
+                    <FontAwesomeIcon
+                      icon={faBookmark}
+                      className="mx-2"
+                      onClick={async () => {
+                        await fetch(`${URL}bookmarks/${article._id}`, {
+                          headers: {
+                            "auth-token": localStorage.token,
+                            "Content-Type": "application/json",
+                          },
+                        });
+                        // console.log(article._id);
+                      }}
+                    />
+                    <FontAwesomeIcon
+                      icon={faHeart}
+                      className="mx-2"
+                      onClick={async () => {
+                        await fetch(`${URL}favorites/${article._id}`, {
+                          headers: {
+                            "auth-token": localStorage.token,
+                            "Content-Type": "application/json",
+                          },
+                        });
+                        // console.log(article._id);
+                      }}
+                    />
                   </div>
                   {article.title}
                 </Card.Title>
@@ -114,7 +129,10 @@ const Article = (props) => {
   return (
     <div>
       <Container className="mt-5">
-        <h1 style={{ color: "white" }} className="text-center mb-3">
+        <h1
+          style={{ color: "white", fontSize: "2.8em" }}
+          className="text-center mb-3"
+        >
           Conscious Culture Reads
         </h1>
         {props.article ? loaded() : loading()}

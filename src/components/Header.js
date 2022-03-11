@@ -13,7 +13,7 @@ const Header = () => {
 
   return (
     <div>
-      <Navbar variant="light" sticky="top">
+      <Navbar variant="light">
         <Nav className="container-fluid">
           <Navbar.Brand href="/" className="mx-4">
             <Link
@@ -23,39 +23,50 @@ const Header = () => {
                 color: "#C5C6C7",
               }}
             >
-              <strong>Conscious Culture Reads</strong>
+              Conscious Culture Reads
             </Link>
           </Navbar.Brand>
-          <Nav className="ml-auto">
+          <Nav className="ml-auto mx-4">
             {!token ? (
-              <div>
-                <Nav.Item>
-                  <Nav.Link>
-                    <Link
-                      to="/login"
-                      style={{
-                        textDecoration: "none",
-                        color: "#C5C6C7",
-                      }}
-                    >
-                      <strong>Login</strong>
-                    </Link>
-                  </Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link>
-                    <Link
-                      to="/register"
-                      style={{
-                        textDecoration: "none",
-                        color: "#C5C6C7",
-                      }}
-                    >
-                      <strong>Sign Up</strong>
-                    </Link>
-                  </Nav.Link>
-                </Nav.Item>
-              </div>
+              <Nav.Item>
+                <Nav.Link>
+                  <Link
+                    to="/register"
+                    style={{
+                      textDecoration: "none",
+                      color: "#C5C6C7",
+                    }}
+                  >
+                    Sign Up
+                  </Link>
+                </Nav.Link>
+              </Nav.Item>
+            ) : (
+              <Nav.Item>
+                <Nav.Link>
+                  <Link
+                    to="/dashboard"
+                    style={{ textDecoration: "none", color: "#C5C6C7" }}
+                  >
+                    Dashboard
+                  </Link>
+                </Nav.Link>
+              </Nav.Item>
+            )}
+            {!token ? (
+              <Nav.Item>
+                <Nav.Link>
+                  <Link
+                    to="/login"
+                    style={{
+                      textDecoration: "none",
+                      color: "#C5C6C7",
+                    }}
+                  >
+                    Login
+                  </Link>
+                </Nav.Link>
+              </Nav.Item>
             ) : (
               <Nav.Item>
                 <Nav.Link>
@@ -64,7 +75,7 @@ const Header = () => {
                     style={{ textDecoration: "none", color: "#C5C6C7" }}
                     onClick={handleLogout}
                   >
-                    <strong>Log out</strong>
+                    Log out
                   </Link>
                 </Nav.Link>
               </Nav.Item>

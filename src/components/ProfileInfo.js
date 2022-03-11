@@ -2,7 +2,7 @@ import { Card, Container, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const ProfileInfo = ({ user }) => {
-  console.log(user);
+  //   console.log(user);
 
   const loaded = () => {
     return (
