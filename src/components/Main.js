@@ -8,11 +8,12 @@ import Settings from "../pages/Settings";
 import About from "../pages/About";
 import Advertise from "../pages/Advertise";
 import Status404 from "../pages/Status404";
+import Favorite from "../pages/Favorites";
+import Note from "../pages/Note";
 
 const Main = (props) => {
   const [article, setArticle] = useState(null);
   const [token, setToken] = useState({ token: null });
-  const [favorites, setFavorites] = useState(null);
 
   const ARTICLEURL = "https://capstone-mern-backend.herokuapp.com/articles";
 
@@ -53,12 +54,9 @@ const Main = (props) => {
         ) : null}
         <Route
           path="/dashboard/favorites"
-          element={<Dashboard reads={article} />}
+          element={<Favorite reads={article} />}
         />
-        <Route
-          path="/dashboard/notes"
-          element={<Dashboard reads={article} />}
-        />
+        <Route path="/dashboard/notes" element={<Note reads={article} />} />
         <Route path="/settings" element={<Settings token={token} />} />
         <Route path="/about" element={<About />} />
         <Route path="/advertise" element={<Advertise />} />

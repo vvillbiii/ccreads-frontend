@@ -4,11 +4,11 @@ import ProfileNav from "../components/Profilenav";
 import InterestingRead from "../components/InterestingRead";
 import { useState, useEffect } from "react";
 
-const Dashboard = (props) => {
+const Note = (props) => {
   const reads = props.reads;
   const URL = "https://capstone-mern-backend.herokuapp.com/";
   const [user, setUser] = useState(null);
-  const [bookmarks, setBookmarks] = useState(null);
+  const [notes, setNotes] = useState(null);
 
   const getUser = async () => {
     const response = await fetch(`${URL}users`, {
@@ -24,31 +24,30 @@ const Dashboard = (props) => {
     getUser();
   }, []);
 
-  const getBookmarks = async () => {
-    const response = await fetch(`${URL}bookmarks`, {
+  const getNotes = async () => {
+    const response = await fetch(`${URL}notes`, {
       headers: {
         "auth-token": localStorage.token,
         "Content-Type": "application/json",
       },
     });
     const data = await response.json();
-    setBookmarks(data);
+    console.log(data);
+    setNotes(data);
   };
 
   useEffect(() => {
-    getBookmarks();
+    getNotes();
   }, []);
 
   const loaded = () => {
-    return bookmarks.bookmarks.map((read) => (
+    return notes.map((read) => (
       <div key={read._id}>
         <Container>
           <Card className="mb-3">
             <Card.Body>
               <Card.Title>{read.title}</Card.Title>
-              <Card.Subtitle className="mb-2 text-muted">
-                Bookmark
-              </Card.Subtitle>
+              <Card.Subtitle className="mb-2 text-muted">Note</Card.Subtitle>
               <Card.Text>{read.description}</Card.Text>
               <Card.Link href={read.url}>Read</Card.Link>
             </Card.Body>
@@ -70,12 +69,12 @@ const Dashboard = (props) => {
     <div>
       <Container className="mt-5">
         <Row>
-          <Col lg>
+          <Col sm>
             <ProfileInfo user={user} />
             <ProfileNav />
           </Col>
-          <Col lg={6}>{bookmarks ? loaded() : loading()}</Col>
-          <Col lg>
+          <Col lg={6}>{notes ? loaded() : loading()}</Col>
+          <Col sm>
             <InterestingRead reads={reads} />
           </Col>
         </Row>
@@ -84,4 +83,4 @@ const Dashboard = (props) => {
   );
 };
 
-export default Dashboard;
+export default Note;
