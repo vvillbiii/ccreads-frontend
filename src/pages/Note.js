@@ -1,14 +1,16 @@
-import { Container, Row, Col, Spinner, Card } from "react-bootstrap";
+import { Container, Row, Col, Spinner, Card, Button } from "react-bootstrap";
 import ProfileInfo from "../components/ProfileInfo";
 import ProfileNav from "../components/Profilenav";
 import InterestingRead from "../components/InterestingRead";
 import { useState, useEffect } from "react";
+import UpdateNoteModal from "../components/UpdateNoteModal";
 
 const Note = (props) => {
   const reads = props.reads;
   const URL = "https://capstone-mern-backend.herokuapp.com/";
   const [user, setUser] = useState(null);
   const [notes, setNotes] = useState(null);
+  const [modalShow, setModalShow] = useState(false);
 
   const getUser = async () => {
     const response = await fetch(`${URL}users`, {
@@ -32,7 +34,6 @@ const Note = (props) => {
       },
     });
     const data = await response.json();
-    console.log(data);
     setNotes(data);
   };
 
@@ -41,16 +42,31 @@ const Note = (props) => {
   }, []);
 
   const loaded = () => {
-    return notes.map((read) => (
-      <div key={read._id}>
+    return notes.map((note) => (
+      <div key={note._id}>
         <Container>
           <Card className="mb-3">
             <Card.Body>
               <Card.Subtitle className="mb-2 text-muted">Note</Card.Subtitle>
-              <Card.Text>{read.body}</Card.Text>
+              <Card.Text>{note.body}</Card.Text>
+              <Button
+                size="sm"
+                variant="link"
+                style={{ textDecoration: "none" }}
+                onClick={() => {
+                  setModalShow(true);
+                }}
+              >
+                Edit Note
+              </Button>
             </Card.Body>
           </Card>
         </Container>
+        <UpdateNoteModal
+          note={note}
+          show={modalShow}
+          onHide={() => setModalShow(false)}
+        />
       </div>
     ));
   };

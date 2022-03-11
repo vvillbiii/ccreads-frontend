@@ -1,6 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Navbar, Nav } from "react-bootstrap";
-import { useState, useEffect } from "react";
 
 const Header = () => {
   const token = localStorage.getItem("token");
