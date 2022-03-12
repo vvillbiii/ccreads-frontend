@@ -1,19 +1,24 @@
-import { Card, Spinner, Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Card, Spinner, Container, Button } from "react-bootstrap";
+import { Link, useHref } from "react-router-dom";
+import { forwardRef } from "react";
 
 const InterestingRead = (props) => {
   const loaded = () => {
     return props.reads.map((read) => (
       <div key={read._id}>
         <Container>
-          <li>
-            <Link
-              to={read.url}
-              style={{ color: "white", textDecoration: "none" }}
+          <Card.Link href={read.url}>
+            <Button
+              variant="Link"
+              style={{
+                color: "white",
+                textDecoration: "none",
+                fontSize: "15px",
+              }}
             >
-              <p style={{ fontSize: "16px" }}> {read.title}</p>
-            </Link>
-          </li>
+              {read.title}
+            </Button>
+          </Card.Link>
         </Container>
       </div>
     ));
@@ -29,11 +34,11 @@ const InterestingRead = (props) => {
   return (
     <div>
       <Container>
-        <Card>
+        <Card className="pb-2">
           <Card.Title className="text-center mt-2">
             Interesting Reads
           </Card.Title>
-          <ul>{props.reads ? loaded() : loading()}</ul>
+          {props.reads ? loaded() : loading()}
         </Card>
       </Container>
     </div>

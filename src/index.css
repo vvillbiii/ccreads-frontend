@@ -53,3 +53,18 @@ body,
   /* height: 15vw;
   object-fit: cover; */
 }
+
+.edit:hover {
+  cursor: pointer;
+  color: #17fc1b;
+}
+
+.heart:hover {
+  cursor: pointer;
+  color: #fc3d96;
+}
+
+.bookmark:hover {
+  cursor: pointer;
+  color: #246efd;
+}

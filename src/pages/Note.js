@@ -39,36 +39,50 @@ const Note = (props) => {
 
   useEffect(() => {
     getNotes();
-  }, []);
+  });
 
   const loaded = () => {
-    return notes.map((note) => (
-      <div key={note._id}>
-        <Container>
-          <Card className="mb-3">
-            <Card.Body>
-              <Card.Subtitle className="mb-2 text-muted">Note</Card.Subtitle>
-              <Card.Text>{note.body}</Card.Text>
-              <Button
-                size="sm"
-                variant="link"
-                style={{ textDecoration: "none" }}
-                onClick={() => {
-                  setModalShow(true);
-                }}
-              >
-                Edit Note
-              </Button>
-            </Card.Body>
-          </Card>
-        </Container>
-        <UpdateNoteModal
-          note={note}
-          show={modalShow}
-          onHide={() => setModalShow(false)}
-        />
-      </div>
-    ));
+    if (notes.length === 0) {
+      return (
+        <div>
+          <h1
+            style={{ color: "white", fontSize: "2.8em" }}
+            className="text-center mb-3"
+          >
+            No Notes Added Yet.
+          </h1>
+        </div>
+      );
+    } else {
+      return notes.map((note) => (
+        <div key={note._id}>
+          <Container>
+            <Card className="mb-3">
+              <Card.Body>
+                <Card.Title>Note on: {note.article.title}</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">Note</Card.Subtitle>
+                <Card.Text>{note.body}</Card.Text>
+                <Button
+                  size="sm"
+                  variant="link"
+                  style={{ textDecoration: "none" }}
+                  onClick={() => {
+                    setModalShow(true);
+                  }}
+                >
+                  Edit Note
+                </Button>
+              </Card.Body>
+            </Card>
+          </Container>
+          <UpdateNoteModal
+            note={note}
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+          />
+        </div>
+      ));
+    }
   };
 
   const loading = () => {

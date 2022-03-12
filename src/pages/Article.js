@@ -21,17 +21,17 @@ const Article = (props) => {
             <Card className="rounded">
               <Card.Body>
                 <Card.Title style={{ color: "white" }}>
-                  <div className="d-flex justify-content-end">
+                  <div className="d-flex justify-content-end mb-2">
                     <FontAwesomeIcon
                       icon={faPenToSquare}
-                      className="mx-2"
+                      className="mx-2 edit"
                       onClick={() => {
                         setModalShow(true);
                       }}
                     />
                     <FontAwesomeIcon
                       icon={faBookmark}
-                      className="mx-2"
+                      className="mx-2 bookmark"
                       onClick={async () => {
                         await fetch(`${URL}bookmarks/${article._id}`, {
                           headers: {
@@ -43,7 +43,7 @@ const Article = (props) => {
                     />
                     <FontAwesomeIcon
                       icon={faHeart}
-                      className="mx-2"
+                      className="mx-2 heart"
                       onClick={async () => {
                         await fetch(`${URL}favorites/${article._id}`, {
                           headers: {
@@ -61,9 +61,9 @@ const Article = (props) => {
                 </Card.Subtitle>
                 <Card.Text>{article.description}</Card.Text>
                 <div className="d-flex justify-content-end mt3">
-                  <Link to={article.url}>
+                  <Card.Link href={article.url}>
                     <Button variant="outline-primary">Read</Button>
-                  </Link>
+                  </Card.Link>
                 </div>
               </Card.Body>
             </Card>

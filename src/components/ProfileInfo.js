@@ -10,11 +10,13 @@ const ProfileInfo = ({ user }) => {
         <Container>
           <Card>
             <Card.Body>
-              <Card.Img
-                src={user.image}
-                style={{ width: "30%" }}
-                className="rounded-circle"
-              />
+              <div className="d-flex justify-content-center">
+                <Card.Img
+                  src={user.image}
+                  style={{ width: "40%" }}
+                  className="rounded-circle"
+                />
+              </div>
               <Card.Title className="mt-2 text-center">
                 {user.username}
               </Card.Title>
