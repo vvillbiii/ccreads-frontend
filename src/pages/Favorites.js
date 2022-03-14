@@ -42,13 +42,24 @@ const Favorite = (props) => {
   const loaded = () => {
     if (favorites.favoriteArticles.length === 0) {
       return (
-        <div>
-          <h1
-            style={{ color: "white", fontSize: "2.8em" }}
-            className="text-center mb-3"
-          >
-            No Favorites Added Yet.
-          </h1>
+        <div className="mb-3">
+          <Container>
+            <Card>
+              <h1
+                style={{ color: "white", fontSize: "2.8em" }}
+                className="text-center mt-3"
+              >
+                No Favorites Added Yet.
+              </h1>
+              <Card.Link
+                href="/"
+                style={{ textDecorationLine: "none" }}
+                className="d-flex justify-content-center mb-5"
+              >
+                Start Adding Favorites
+              </Card.Link>
+            </Card>
+          </Container>
         </div>
       );
     } else {
@@ -64,6 +75,7 @@ const Favorite = (props) => {
                 <Card.Text>{read.description}</Card.Text>
                 <Card.Link
                   href={read.url}
+                  target="_blank"
                   style={{ textDecorationLine: "none" }}
                 >
                   Read

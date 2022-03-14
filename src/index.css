@@ -1,15 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 /* Open Sans Font */
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
-/* Merriweather  */
-@import url("https://fonts.googleapis.com/css2?family=Merriweather+Sans&family=Open+Sans:wght@300&display=swap");
 
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Merriweather+Sans&family=Open+Sans:wght@300&display=swap");
 * {
   margin: 0;
   padding: 0;
-  /* font-family: "Merriweather Sans", sans-serif; */
   font-family: "Open Sans", sans-serif;
+}
+p {
+  font-size: 18px;
 }
 
 h1,
@@ -18,8 +17,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Cormorant Garamond", serif;
-  /* font-family: "Merriweather Sans", sans-serif; */
+  font-family: "Roboto";
 }
 
 .card {
@@ -42,16 +40,10 @@ body,
 .App,
 .App > div {
   height: 100%;
-  /* background-color: rgba(48, 47, 67, 0.8); */
-  background-color: #302f43;
-  background-color: black;
-}
-
-.card-img {
-  width: 100%;
-  align-items: center;
-  /* height: 15vw;
-  object-fit: cover; */
+  /* background-color: rgb(48, 47, 67); */
+  background-color: #333248;
+  /* background-color: black; */
+  /* background-color: #f3f2ef; (Light mode background) */
 }
 
 .edit:hover {

@@ -6,12 +6,19 @@ import {
   faBookmark,
   faHeart,
 } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
 import NoteModal from "../components/NoteModal";
 
 const Article = (props) => {
   const [modalShow, setModalShow] = useState(false);
   const URL = "https://capstone-mern-backend.herokuapp.com/";
+  const [selectElement, setSelectElement] = useState(0);
+
+  const handleClick = (id) => {
+    setSelectElement(id);
+    if (selectElement === id) {
+      setModalShow(true);
+    }
+  };
 
   const loaded = () => {
     return props.article.map((article) => (
@@ -24,10 +31,10 @@ const Article = (props) => {
                   <div className="d-flex justify-content-end mb-2">
                     <FontAwesomeIcon
                       icon={faPenToSquare}
-                      className="mx-2 edit"
                       onClick={() => {
-                        setModalShow(true);
+                        handleClick(article);
                       }}
+                      className="edit mx-2"
                     />
                     <FontAwesomeIcon
                       icon={faBookmark}
@@ -61,7 +68,7 @@ const Article = (props) => {
                 </Card.Subtitle>
                 <Card.Text>{article.description}</Card.Text>
                 <div className="d-flex justify-content-end mt3">
-                  <Card.Link href={article.url}>
+                  <Card.Link href={article.url} target="_blank">
                     <Button variant="outline-primary">Read</Button>
                   </Card.Link>
                 </div>
@@ -71,7 +78,7 @@ const Article = (props) => {
             <NoteModal
               show={modalShow}
               onHide={() => setModalShow(false)}
-              article={article}
+              article={selectElement}
             />
           </Row>
         </Container>

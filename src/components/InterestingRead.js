@@ -1,13 +1,11 @@
 import { Card, Spinner, Container, Button } from "react-bootstrap";
-import { Link, useHref } from "react-router-dom";
-import { forwardRef } from "react";
 
 const InterestingRead = (props) => {
   const loaded = () => {
     return props.reads.map((read) => (
       <div key={read._id}>
         <Container>
-          <Card.Link href={read.url}>
+          <Card.Link href={read.url} target="_blank">
             <Button
               variant="Link"
               style={{
@@ -25,7 +23,7 @@ const InterestingRead = (props) => {
   };
   const loading = () => {
     return (
-      <div className="d-flex justify-content-center mt-5 mb-5">
+      <div className="d-flex justify-content-center my-5">
         <Spinner animation="border" variant="light" />
       </div>
     );

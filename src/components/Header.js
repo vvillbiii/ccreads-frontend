@@ -12,7 +12,7 @@ const Header = () => {
 
   return (
     <div>
-      <Navbar variant="light">
+      <Navbar variant="light" expand="lg">
         <Nav className="container-fluid">
           <Navbar.Brand href="/" className="mx-4">
             <Link
@@ -20,66 +20,71 @@ const Header = () => {
               style={{
                 textDecoration: "none",
                 color: "#C5C6C7",
+                fontFamily: "Roboto",
               }}
             >
               Conscious Culture Reads
             </Link>
           </Navbar.Brand>
-          <Nav className="ml-auto mx-4">
-            {!token ? (
-              <Nav.Item>
-                <Nav.Link>
-                  <Link
-                    to="/register"
-                    style={{
-                      textDecoration: "none",
-                      color: "#C5C6C7",
-                    }}
-                  >
-                    Sign Up
-                  </Link>
-                </Nav.Link>
-              </Nav.Item>
-            ) : (
-              <Nav.Item>
-                <Nav.Link>
-                  <Link
-                    to="/dashboard"
-                    style={{ textDecoration: "none", color: "#C5C6C7" }}
-                  >
-                    Dashboard
-                  </Link>
-                </Nav.Link>
-              </Nav.Item>
-            )}
-            {!token ? (
-              <Nav.Item>
-                <Nav.Link>
-                  <Link
-                    to="/login"
-                    style={{
-                      textDecoration: "none",
-                      color: "#C5C6C7",
-                    }}
-                  >
-                    Login
-                  </Link>
-                </Nav.Link>
-              </Nav.Item>
-            ) : (
-              <Nav.Item>
-                <Nav.Link>
-                  <Link
-                    to="/"
-                    style={{ textDecoration: "none", color: "#C5C6C7" }}
-                    onClick={handleLogout}
-                  >
-                    Log out
-                  </Link>
-                </Nav.Link>
-              </Nav.Item>
-            )}
-          </Nav>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="ml-auto">
+              {!token ? (
+                <Nav.Item>
+                  <Nav.Link>
+                    <Link
+                      to="/register"
+                      style={{
+                        textDecoration: "none",
+                        color: "#C5C6C7",
+                      }}
+                      className="mx-auto"
+                    >
+                      Sign Up
+                    </Link>
+                  </Nav.Link>
+                </Nav.Item>
+              ) : (
+                <Nav.Item>
+                  <Nav.Link>
+                    <Link
+                      to="/dashboard"
+                      style={{ textDecoration: "none", color: "#C5C6C7" }}
+                    >
+                      Dashboard
+                    </Link>
+                  </Nav.Link>
+                </Nav.Item>
+              )}
+              {!token ? (
+                <Nav.Item>
+                  <Nav.Link>
+                    <Link
+                      to="/login"
+                      style={{
+                        textDecoration: "none",
+                        color: "#C5C6C7",
+                      }}
+                    >
+                      Login
+                    </Link>
+                  </Nav.Link>
+                </Nav.Item>
+              ) : (
+                <Nav.Item>
+                  <Nav.Link>
+                    <Link
+                      to="/"
+                      style={{ textDecoration: "none", color: "#C5C6C7" }}
+                      onClick={handleLogout}
+                    >
+                      Log out
+                    </Link>
+                  </Nav.Link>
+                </Nav.Item>
+              )}
+            </Nav>
+          </Navbar.Collapse>
         </Nav>
       </Navbar>
     </div>

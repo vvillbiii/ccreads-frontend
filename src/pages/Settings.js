@@ -11,9 +11,7 @@ import {
 import { useNavigate } from "react-router-dom";
 
 const Settings = (props) => {
-  //   console.log(props);
   const navigate = useNavigate();
-
   const URL = "https://capstone-mern-backend.herokuapp.com/";
   const [user, setUser] = useState(null);
 
@@ -37,7 +35,6 @@ const Settings = (props) => {
       body: JSON.stringify(editForm),
     });
     const data = await response.json();
-    // console.log(data);
     setEditForm({ user });
     getUser();
   };
@@ -56,8 +53,6 @@ const Settings = (props) => {
   useEffect(() => {
     getUser();
   }, []);
-
-  //   console.log(user);
 
   const [editForm, setEditForm] = useState({ user });
 
@@ -109,7 +104,7 @@ const Settings = (props) => {
                 <Form.Group className="mb-3">
                   <Form.Label style={{ color: "white" }}>Image</Form.Label>
                   <Form.Control
-                    type="text"
+                    type="file"
                     value={editForm.image}
                     placeholder={user.image}
                     name="image"

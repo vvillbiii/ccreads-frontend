@@ -3,6 +3,7 @@ import { useState } from "react";
 
 const NoteModal = (props) => {
   const id = props.article._id;
+  const article = props.article;
   const URL = "https://capstone-mern-backend.herokuapp.com/";
 
   const [newNote, setNewNote] = useState({
@@ -43,7 +44,7 @@ const NoteModal = (props) => {
       <Modal.Body>
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Note</Form.Label>
+            <Form.Label> {article.title} note </Form.Label>
             <textarea
               className="form-control"
               id="body"
