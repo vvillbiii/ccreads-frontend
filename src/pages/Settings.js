@@ -104,7 +104,7 @@ const Settings = (props) => {
                 <Form.Group className="mb-3">
                   <Form.Label style={{ color: "white" }}>Image</Form.Label>
                   <Form.Control
-                    type="file"
+                    type="text"
                     value={editForm.image}
                     placeholder={user.image}
                     name="image"
