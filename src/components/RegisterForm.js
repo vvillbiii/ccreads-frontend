@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 const RegisterForm = (props) => {
   const URL = "https://capstone-mern-backend.herokuapp.com/";
