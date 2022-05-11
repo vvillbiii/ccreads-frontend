@@ -97,7 +97,7 @@ const Article = (props) => {
     <div>
       <Container className="mt-5">
         <h1
-          style={{ color: "white", fontSize: "2.8em" }}
+          style={{ color: "white", fontSize: "3em", fontWeight: "bold" }}
           className="text-center mb-3"
         >
           Conscious Culture Reads
